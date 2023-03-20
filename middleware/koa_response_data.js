@@ -5,8 +5,10 @@ module.exports = async (ctx, next) => {
   // 根据url
   const url = ctx.request.url; // /api/seller   ../data/seller.json
   let filePath = url.replace("/api", ""); //  /seller
+
   filePath = "../data" + filePath + ".json"; // ../data/seller.json
   filePath = path.join(__dirname, filePath);
+  console.log(filePath);
   //如果找不到文件是会报错的，为了不让它报错，所以要进行try,catch
   try {
     const ret = await fileUtils.getFileJsonData(filePath); //返回的是promise对象
